@@ -3,11 +3,13 @@ import { todoReducer, initialState } from "../reducers";
 
 const TodoForm = () => {
   const [state, dispatch] = useReducer(todoReducer, initialState);
-  const [newTodo, setNewTodo] = useState();
+  const [newTodo, setNewTodo] = useState([]);
 
   const handleChange = e => {
     setNewTodo(e.target.value);
   };
+
+  console.log(state);
 
   return (
     <div>
@@ -22,16 +24,7 @@ const TodoForm = () => {
       <button
         onClick={() => {
           dispatch({ type: "ADD_TODO", payload: newTodo });
-          setNewTodo({
-            todos: [
-              ...state,
-              {
-                item: "",
-                completed: false,
-                id: new Date()
-              }
-            ]
-          });
+          setNewTodo();
         }}
       >
         +

@@ -7,7 +7,11 @@ export const initialState = {
 export const todoReducer = (state, action) => {
     switch (action.type) {
         case "ADD_TODO":
-            return{ ...state, item: action.payload}
+            return{ ...state, 
+                item: action.payload,
+                completed: false,
+                id: new Date()
+            }
         case "TOGGLE_DONE":
             return { ...state, completed: !state.completed}
         default:
